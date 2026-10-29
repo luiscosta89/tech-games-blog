@@ -170,11 +170,14 @@ def page(title, body, prefix="", description=DEFAULT_DEK, image="assets/images/1
 def article_card(article, prefix="", compact=True):
     tags = "".join(f'<span class="tag">{html.escape(tag)}</span>' for tag in article["tags"])
     klass = "story-card" if compact else "feature-card"
-    media = "story-media" if compact else "feature-media"
-    copy = "story-copy" if compact else "feature-copy"
+    if compact:
+        return f'''<a class="story-card" href="{prefix}articles/{article["slug"]}.html">
+      <div class="story-copy"><div class="story-meta"><span>{html.escape(article["category"])}</span><span>{html.escape(article["date"])}</span></div><h3>{html.escape(article["card_title"])}</h3><p>{html.escape(article["card_dek"])}</p></div>
+      <div class="story-media"><img loading="lazy" src="{prefix}{article["cover"]}" alt="{html.escape(article["cover_alt"])}"></div>
+    </a>'''
     return f'''<a class="{klass}" href="{prefix}articles/{article["slug"]}.html">
-      <div class="{media}"><img loading="lazy" src="{prefix}{article["cover"]}" alt="{html.escape(article["cover_alt"])}"></div>
-      <div class="{copy}"><div class="tags">{tags}</div><h3>{html.escape(article["card_title"])}</h3><p>{html.escape(article["card_dek"])}</p><span class="read-more">Ler artigo <span aria-hidden="true">→</span></span></div>
+      <div class="feature-media"><img loading="lazy" src="{prefix}{article["cover"]}" alt="{html.escape(article["cover_alt"])}"></div>
+      <div class="feature-copy"><div class="tags">{tags}</div><h3>{html.escape(article["card_title"])}</h3><p>{html.escape(article["card_dek"])}</p><span class="read-more">Ler artigo <span aria-hidden="true">→</span></span></div>
     </a>'''
 
 
