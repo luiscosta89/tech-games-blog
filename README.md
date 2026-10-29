@@ -1,14 +1,15 @@
 # Sagitta Tech — GitHub Pages template
 
-Template estático, responsivo e sem dependências de build para um blog de tecnologia e games. A primeira publicação adapta, com autorização do autor, o artigo do Medium **“OPINIÃO | 10 jogos de 2026 que você deveria jogar”**.
+Template estático, responsivo e sem dependências de build para um blog de tecnologia e games. O site organiza as publicações nas categorias **Review** e **Opinião**.
 
 ## Estrutura
 
 - `index.html` — capa do blog
-- `articles/10-jogos-2026.html` — artigo completo
+- `articles/` — artigos completos
+- `categories/` — páginas de Review e Opinião
 - `assets/style.css` — tema editorial escuro
 - `assets/site.js` — vídeos sob demanda e sumário ativo
-- `_source/10-jogos-2026.md` — texto-fonte importado do Medium
+- `_source/` — textos-fonte dos artigos
 - `scripts/build.py` — recompõe as páginas estáticas
 
 ## Visualização local
