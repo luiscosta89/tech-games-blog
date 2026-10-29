@@ -60,7 +60,7 @@ h1, h2, h3 { font-family: "Space Grotesk", sans-serif; text-wrap: balance; }
 .category-pills { display: flex; gap: 8px; }
 .category-pills a { color: #d8dbe1; text-decoration: none; border: 1px solid var(--border); border-radius: 999px; padding: 9px 13px; font-size: 13px; }
 .category-pills a:hover, .category-pills a:focus-visible { color: var(--accent-2); border-color: rgba(52,231,196,.4); outline: none; }
-.article-grid { display: flex; flex-direction: column; max-width: 940px; border-top: 1px solid var(--border); }
+.article-grid { display: flex; flex-direction: column; width: 100%; border-top: 1px solid var(--border); }
 .story-card { display: grid; grid-template-columns: minmax(0, 1fr) 190px; gap: 28px; align-items: center; min-width: 0; padding: 26px 0; border-bottom: 1px solid var(--border); text-decoration: none; transition: opacity .2s; }
 .story-card:hover { opacity: .78; }
 .story-media { aspect-ratio: 1.55/1; overflow: hidden; border-radius: 5px; background: var(--surface-2); order: 2; }
