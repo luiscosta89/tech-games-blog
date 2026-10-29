@@ -6,6 +6,7 @@ import unicodedata
 
 ROOT = Path(__file__).resolve().parents[1]
 DEFAULT_DEK = "Análises, opiniões e descobertas sobre tecnologia, games e cultura."
+ASSET_VERSION = "20261029-wide-articles"
 
 ARTICLES = [
     {
@@ -172,7 +173,7 @@ def page(title, body, prefix="", description=DEFAULT_DEK, image="assets/images/1
   <meta property="og:image" content="{prefix}{image}">
   <title>{html.escape(title)} · Sagitta Tech</title>
   <link rel="icon" href="{prefix}assets/images/sagitta-tech.png">
-  <link rel="stylesheet" href="{prefix}assets/style.css">
+  <link rel="stylesheet" href="{prefix}assets/style.css?v={ASSET_VERSION}">
 </head>
 <body>
 {header(prefix)}
