@@ -1,12 +1,12 @@
 # Sagitta Tech — GitHub Pages template
 
-Template estático, responsivo e sem dependências de build para um blog de tecnologia e games. O site organiza as publicações nas categorias **Review** e **Opinião**.
+Template estático, responsivo e sem dependências de build para um blog de tecnologia e games. O site organiza as publicações nas categorias **Momento Tech**, **Review** e **Opinião**.
 
 ## Estrutura
 
 - `index.html` — capa do blog
 - `articles/` — artigos completos
-- `categories/` — páginas de Review e Opinião
+- `categories/` — páginas de Momento Tech, Review e Opinião
 - `assets/style.css` — tema editorial escuro
 - `assets/site.js` — vídeos sob demanda e sumário ativo
 - `_source/` — textos-fonte dos artigos

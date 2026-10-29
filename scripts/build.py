@@ -9,6 +9,22 @@ DEFAULT_DEK = "Análises, opiniões e descobertas sobre tecnologia, games e cult
 
 ARTICLES = [
     {
+        "slug": "o-que-aconteceu-com-o-php",
+        "source": "o-que-aconteceu-com-o-php.md",
+        "title": "MOMENTO TECH | O que aconteceu com o PHP?",
+        "card_title": "O que aconteceu com o PHP?",
+        "category": "Momento Tech",
+        "topic": "Tecnologia",
+        "date": "29 out. 2026",
+        "reading": "8 min de leitura",
+        "dek": "Da popularização da Web às vulnerabilidades críticas de 2026: como o PHP evoluiu e por que sua segurança voltou ao centro do debate.",
+        "card_dek": "A história, a evolução e as falhas recentes que recolocaram o PHP no centro das discussões sobre segurança.",
+        "cover": "assets/images/o-que-aconteceu-com-o-php/cover.png",
+        "cover_alt": "Logotipo do PHP sobre fundo azul",
+        "tags": ["Momento Tech", "PHP", "Segurança"],
+        "images": ["image-01.jpg", "image-02.jpg", "image-03.jpg", "image-04.jpg", "image-05.jpg", "image-06.jpg", "image-07.jpg"],
+    },
+    {
         "slug": "10-jogos-2026",
         "source": "10-jogos-2026.md",
         "title": "OPINIÃO | 10 jogos de 2026 que você deveria jogar",
@@ -133,7 +149,7 @@ def header(prefix=""):
 <header class="site-header">
   <nav class="nav" aria-label="Principal">
     <a class="brand" href="{prefix}index.html"><img src="{prefix}assets/images/sagitta-tech.png" alt=""><span>Sagitta<span class="brand-mark">Tech</span></span></a>
-    <div class="nav-links"><a href="{prefix}index.html#artigos">Artigos</a><a href="{prefix}categories/review.html">Review</a><a href="{prefix}categories/opiniao.html">Opinião</a></div>
+    <div class="nav-links"><a href="{prefix}index.html#artigos">Artigos</a><a href="{prefix}categories/momento-tech.html">Momento Tech</a><a href="{prefix}categories/review.html">Review</a><a href="{prefix}categories/opiniao.html">Opinião</a></div>
   </nav>
 </header>'''
 
@@ -188,7 +204,7 @@ def build_article(article):
     aside = f'<aside class="toc" aria-label="Neste artigo"><strong>Neste artigo</strong>{toc_html}</aside>' if toc else ""
     body = f'''<main id="conteudo" class="article-shell">
   <header class="article-header">
-    <a class="eyebrow category-link" href="../categories/{slugify(article["category"])}.html">{html.escape(article["category"])} · Games</a>
+    <a class="eyebrow category-link" href="../categories/{slugify(article["category"])}.html">{html.escape(article["category"])} · {html.escape(article.get("topic", "Games"))}</a>
     <h1>{html.escape(article["title"])}</h1>
     <p class="dek">{html.escape(article["dek"])}</p>
     <div class="meta"><span class="author"><img src="../assets/images/sagitta-tech.png" alt="">Luís Antônio Costa</span><span>{html.escape(article["date"])}</span><span>{html.escape(article["reading"])}</span></div>
@@ -211,13 +227,13 @@ def build_home():
     <aside class="hero-aside"><span class="label">Sobre o Sagitta Tech</span><p>Uma flecha certeira na direção do que há de mais interessante no mundo da tecnologia e dos games, por Luís Antônio Costa.</p></aside>
   </section>
   <section id="artigos" class="container section">
-    <div class="section-head"><h2>Em destaque</h2><p>Reviews e opiniões com contexto, personalidade e sem perder tempo com o óbvio.</p></div>
+    <div class="section-head"><h2>Em destaque</h2><p>Tecnologia, reviews e opiniões com contexto, personalidade e sem perder tempo com o óbvio.</p></div>
     {feature}
-    <div class="subsection-head"><h2>Mais artigos</h2><div class="category-pills"><a href="categories/review.html">Review</a><a href="categories/opiniao.html">Opinião</a></div></div>
+    <div class="subsection-head"><h2>Mais artigos</h2><div class="category-pills"><a href="categories/momento-tech.html">Momento Tech</a><a href="categories/review.html">Review</a><a href="categories/opiniao.html">Opinião</a></div></div>
     <div class="article-grid">{recent}</div>
   </section>
 </main>'''
-    return page("Tecnologia e games", body, description="Sagitta Tech: análises, opiniões e descobertas sobre tecnologia e games.")
+    return page("Tecnologia e games", body, description="Sagitta Tech: análises, opiniões e descobertas sobre tecnologia e games.", image=ARTICLES[0]["cover"])
 
 
 def build_category(category):
@@ -235,10 +251,11 @@ def main():
     (ROOT / "categories").mkdir(exist_ok=True)
     for article in ARTICLES:
         (ROOT / "articles" / f'{article["slug"]}.html').write_text(build_article(article), encoding="utf-8")
-    (ROOT / "categories" / "review.html").write_text(build_category("Review"), encoding="utf-8")
-    (ROOT / "categories" / "opiniao.html").write_text(build_category("Opinião"), encoding="utf-8")
+    categories = list(dict.fromkeys(article["category"] for article in ARTICLES))
+    for category in categories:
+        (ROOT / "categories" / f"{slugify(category)}.html").write_text(build_category(category), encoding="utf-8")
     (ROOT / "index.html").write_text(build_home(), encoding="utf-8")
-    print("Built homepage, 3 articles, and 2 category pages")
+    print(f"Built homepage, {len(ARTICLES)} articles, and {len(categories)} category pages")
 
 
 if __name__ == "__main__":
