@@ -48,6 +48,4 @@ Apesar disso, acredito que nenhum "reajusta visual" para otimização será capa
 
 **Opinião Final: EXCELENTE**
 
-![](https://cdn-images-1.medium.com/max/700/0*Ujwh5M3oiVoJNLTE.png)
-
 _Por Luís Antônio Costa_

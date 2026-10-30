@@ -53,7 +53,7 @@ ARTICLES = [
         "cover": "assets/images/1000xresist/cover.png",
         "cover_alt": "Arte de capa de 1000xResist",
         "tags": ["Review", "Ficção científica", "Indie games"],
-        "images": ["image-01.jpg", "image-02.jpg", "image-03.jpg", "image-04.jpg", "image-05.jpg", "image-06.jpg", "image-07.png"],
+        "images": ["image-01.jpg", "image-02.jpg", "image-03.jpg", "image-04.jpg", "image-05.jpg", "image-06.jpg"],
     },
     {
         "slug": "sword-of-the-sea",
